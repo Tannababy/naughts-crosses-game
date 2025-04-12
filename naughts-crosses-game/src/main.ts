@@ -1,12 +1,13 @@
 import "./style.scss";
 
 //Selecting HTML elements through the DOM
-const tiles = document.querySelectorAll<HTMLDivElement>(".box__row-tile");
+const tiles = document.querySelectorAll<HTMLDivElement>(".board__tile");
 
 let currentPlayer: string = "X";
 
-const handleClick = (event: Event) => {
-  const target = event.currentTarget as HTMLDivElement;
+const handleClicks = (event: Event) => {
+    const target = event.currentTarget as HTMLDivElement;
+    console.log(target.id);
 
   // check if tile is filled
   if (target.innerText !== "") {
@@ -20,4 +21,8 @@ const handleClick = (event: Event) => {
   currentPlayer = currentPlayer === "X" ? "0" : "X";
 };
 
-tiles.forEach((tile) => tile.addEventListener("click", handleClick));
+// const checkIfPlayerWon = (event: Event) => {
+
+// }
+
+tiles.forEach((tile) => tile.addEventListener("click", handleClicks));
