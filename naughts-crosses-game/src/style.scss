@@ -1,28 +1,33 @@
+body {
+  background-color: rgb(42, 15, 92);
+}
+
 .header {
   &__title {
     text-align: center;
     font-size: 70px;
     font-weight: bolder;
-    color: rgb(180, 51, 180);
-    text-shadow: black 2px 5px;
+    margin: 30px 60px 10px 60px;
+    color: rgb(130, 28, 130);
+    text-shadow: rgba(0, 0, 255, 0.4) 5px 5px;
     font-family: fantasy;
   }
 
   &__scoreboard {
     text-align: center;
-    border: 2px solid black;
-    box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, 0.2);
-    padding: auto;
-    margin: 100px 350px 50px;
-    font-size: 25px;
+    margin: 50px auto;
+    font-size: 50px;
     font-weight: bolder;
-    color: whitesmoke;
-    text-shadow: black 2px 5px;
-    background-color: rgb(180, 51, 180);
     font-family: fantasy;
 
     &-player {
-      padding-right: 20px;
+      display: inline-block;
+      color: rgb(130, 28, 130);
+      text-shadow: rgba(0, 0, 255, 0.3) 2px 5px;
+      border-bottom: 10px solid rgba(0, 0, 255, 0.3);
+      padding: 10px;
+      margin: 5px;
+      width: 100px;
     }
   }
 }
@@ -31,25 +36,54 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 3px;
-  height: 55vh; //height: 70vh;
-  width: 45vw; //width: 45vw;
+  column-gap: 17px;
+  height: 60vh; //height: 70vh;
+  width: 50vw; //width: 45vw;
   margin: auto;
   font-family: fantasy;
 
   &__tile {
-    height: 18vh; //height: 22vh;
-    width: 14.5vw; //width: 14vw;
+    height: 16vh; //height: 22vh;
+    width: 17vw; //width: 14vw;
     padding-top: 20px;
-    border: 2px solid black;
-    box-shadow: 10px 10px 2px 1px rgba(0, 0, 255, 0.2);
-    border-radius: 2px;
-    color: whitesmoke;
-    text-shadow: black 2px 5px;
+    // box-shadow: 18px 14px 8px rgba(0, 0, 255, 0.2);
+    color: rgb(46, 18, 97);
+    text-shadow: rgba(0, 0, 255, 0.3) 2px 5px;
     font-size: 90px;
     text-align: center;
     font-weight: bold;
-    background-color: rgb(180, 51, 180);
+    background-color: rgb(130, 28, 130);
     cursor: pointer;
   }
 }
+
+.contact {
+  position: relative;
+  margin-top: 30px;
+  opacity: 1;
+  color: rgb(130, 105, 177);
+  font-family: fantasy;
+  text-align: center;
+  text-shadow: rgba(0, 0, 255, 0.3) 3px 2px;
+}
+
+// #tile_1,
+// #tile_4,
+// #tile_7 {
+//   border-right: 10px solid rgba(0, 0, 255, 0.3);
+// }
+
+// #tile_3,
+// #tile_6,
+// #tile_9 {
+//   border-left: 10px solid rgba(0, 0, 255, 0.3);
+// }
+
+// #tile_1,
+// #tile_2,
+// #tile_3,
+// #tile_4,
+// #tile_5,
+// #tile_6 {
+//   border-bottom: 10px solid rgba(0, 0, 255, 0.3);
+// }
