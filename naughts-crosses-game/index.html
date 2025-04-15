@@ -10,25 +10,25 @@
     <header>
       <h1 class="header__title">NAUGHTS & CROSSES</h1>
       <section class="header__scoreboard">
-        <span class="header__scoreboard-player">X: </span>
-        <span class="header__scoreboard-player">0: </span>
+        <span class="header__scoreboard-player" role="player score">X: </span>
+        <span class="header__scoreboard-player" role="player score">0: </span>
       </section>
     </header>
     <main>
-      <section class="board">
+      <section class="board" role="game board">
         <!--board containing squares for X and 0's-->
         <!--if you need to, try using more descriptive id like (upper left)-->
-        <div id="tile_1" class="board__tile"></div>
-        <div id="tile_2" class="board__tile"></div>
-        <div id="tile_3" class="board__tile"></div>
+        <div id="upperLeft" class="board__tile" role="board tile"></div>
+        <div id="upperCenter" class="board__tile" role="board tile"></div>
+        <div id="upperRight" class="board__tile" role="board tile"></div>
 
-        <div id="tile_4" class="board__tile"></div>
-        <div id="tile_5" class="board__tile"></div>
-        <div id="tile_6" class="board__tile"></div>
+        <div id="middleLeft" class="board__tile" role="board tile"></div>
+        <div id="middleCenter" class="board__tile" role="board tile"></div>
+        <div id="middleRight" class="board__tile" role="board tile"></div>
 
-        <div id="tile_7" class="board__tile"></div>
-        <div id="tile_8" class="board__tile"></div>
-        <div id="tile_9" class="board__tile"></div>
+        <div id="lowerLeft" class="board__tile" role="board tile"></div>
+        <div id="lowerCenter" class="board__tile" role="board tile"></div>
+        <div id="lowerRight" class="board__tile" role="board tile"></div>
       </section>
     </main>
     <footer class="contact">Built by: Lotanna Amobi</footer>

@@ -3,26 +3,47 @@ import "./style.scss";
 //Selecting HTML elements through the DOM
 const tiles = document.querySelectorAll<HTMLDivElement>(".board__tile");
 
-let currentPlayer: string = "X";
+let currentPlayer: string = 'X';
+
+type boardState = {
+    [key: string]: string | null;
+}
+const board: boardState = {
+  upperLeft: " ",
+  upperCentre: " ",
+  upperRight: " ",
+  middleLeft: " ",
+  middleCentre: " ",
+  middleRight: " ",
+  lowerLeft: " ",
+  lowerCentre: " ",
+  lowerRight: " ",
+};
 
 const handleClicks = (event: Event) => {
     const target = event.currentTarget as HTMLDivElement;
-    console.log(target.id);
+    const tileLocation = target.id;
+    
+    // check if tile is filled
+    if (target.innerText !== "") {
+        return;
+    }
 
-  // check if tile is filled
-  if (target.innerText !== "") {
-    return;
-  }
+    // fill tile with current player
+    target.innerText = currentPlayer;
 
-  // fill tile with current player
-  target.innerText = currentPlayer;
+    // to update board
+    board[tileLocation] = currentPlayer;
 
-  // to switch players
-  currentPlayer = currentPlayer === "X" ? "0" : "X";
+    // switch players
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+
 };
 
-// const checkIfPlayerWon = (event: Event) => {
 
-// }
+
+// const checkIfPlayerWon = () => { }
+
+
 
 tiles.forEach((tile) => tile.addEventListener("click", handleClicks));
