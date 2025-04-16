@@ -1,1 +1,0 @@
-# naughts-crosses-game
