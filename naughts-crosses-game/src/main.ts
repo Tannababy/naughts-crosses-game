@@ -3,9 +3,6 @@ import "./media-queries.scss";
 
 //Selecting HTML elements through the DOM
 const tiles = document.querySelectorAll<HTMLDivElement>(".board__tile");
-const allScoreSpans = document.querySelector<HTMLSpanElement>(
-  ".header__scoreboard-player"
-);
 const scoreXSpan = document.querySelector<HTMLSpanElement>("#scoreX");
 const score0Span = document.querySelector<HTMLSpanElement>("#score0");
 const restartBtn = document.querySelector<HTMLButtonElement>(
@@ -17,14 +14,13 @@ const clearScoresBtn = document.querySelector<HTMLButtonElement>(
 
 let scoreCountX = 0; // initialise score count
 let scoreCount0 = 0; // initialise score count
-let turnCount = 0; // to track number or turns
+let turnCount = 0; // to track number of turns each player makes
 
 if (
   !tiles ||
   !restartBtn ||
   !score0Span ||
   !scoreXSpan ||
-  !allScoreSpans ||
   !clearScoresBtn
 ) {
   throw new Error(`Some elements can not be found`);
@@ -74,14 +70,6 @@ const handleClicks = (event: Event) => {
 const alertPlayerWin = (currentPlayer: string) => {
   setTimeout(() => alert(`Player ${currentPlayer} has WON! 🏆`), 500);
 };
-
-// const strikeThrough = (currentPlayer: string) => {
-//   tiles.forEach((tile) => {
-//     if (tile.innerText !== "" && tile.innerText === currentPlayer) {
-//       tile.style.textDecoration = "line-through";
-//     }
-//   });
-// };
 
 const updateScoreboard = (scoreX: number, score0: number) => {
   scoreXSpan.innerText = `X: ${scoreX}`;
@@ -152,11 +140,24 @@ const resetBoard = () => {
   currentPlayer = "X";
 };
 
-// const clearScores = () => {
-//   allScoreSpans.
-// };
+const clearScores = () => {
+    scoreCountX = 0;
+    scoreCount0 = 0;
+    updateScoreboard(scoreCountX, scoreCount0);
+};
 
 tiles.forEach((tile) => tile.addEventListener("click", handleClicks));
 restartBtn.addEventListener("click", resetBoard);
-// clearScoresBtn.addEventListener("click", clearScores);
+clearScoresBtn.addEventListener("click", clearScores);
+
+
+
+
 // tiles.forEach((tile) => tile.addEventListener("click",() => checkIfPlayerWon(currentPlayer))
+// const strikeThrough = (currentPlayer: string) => {
+//   tiles.forEach((tile) => {
+//     if (tile.innerText !== "" && tile.innerText === currentPlayer) {
+//       tile.style.textDecoration = "line-through";
+//     }
+//   });
+// };
