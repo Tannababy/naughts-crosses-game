@@ -1,10 +1,15 @@
 @use "./media-queries.scss";
+@use "./mixins.scss";
 
 body {
   background-color: rgb(42, 15, 92);
+  font-family: fantasy;
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
+
   &__title {
     text-align: center;
     font-size: 70px;
@@ -12,10 +17,17 @@ body {
     margin: 30px 60px 10px 60px;
     color: rgb(255, 34, 204);
     text-shadow: black 5px 5px;
-    font-family: fantasy;
 
     @include media-queries.phone {
+      font-size: 30px;
+    }
+
+     @include media-queries.tablet {
       font-size: 40px;
+    }
+
+     @include media-queries.laptop {
+      font-size: 55px;
     }
   }
 
@@ -24,10 +36,20 @@ body {
     margin: 50px auto;
     font-size: 50px;
     font-weight: bolder;
-    font-family: fantasy;
 
     @include media-queries.phone {
-      font-size: 25px;
+      font-size: 20px;
+      margin: 25px auto;
+    }
+
+     @include media-queries.tablet {
+      font-size: 30px;
+      margin: 25px auto;
+    }
+
+     @include media-queries.laptop {
+      font-size: 40px;
+      margin: 25px auto;
     }
 
     &-player {
@@ -38,6 +60,43 @@ body {
       padding: 10px;
       margin: 5px;
       width: 100px;
+
+      @include media-queries.phone {
+        width: 50px;
+      }
+
+      @include media-queries.tablet {
+        width: 65px;
+      }
+
+      @include media-queries.laptop {
+        width: 80px;
+      }
+    }
+  }
+
+  &__BtnContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    font-size: 15px;
+
+    &-restartBtn {
+      @include mixins.header-btn-style;
+
+      @include media-queries.phone {
+        padding: 4px;
+        font-size: 10px;
+      }
+    }
+
+    &-clearScoresBtn {
+      @include mixins.header-btn-style;
+
+      @include media-queries.phone {
+        padding: 4px;
+        font-size: 10px;
+      }
     }
   }
 }
@@ -46,31 +105,46 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  column-gap: 16px;
-  height: 60vh;
-  width: 50vw;
+  column-gap: 2px;
+  height: 70vh;
+  width: 70vw;
   margin: auto;
-  font-family: fantasy;
 
   @include media-queries.phone {
-    column-gap: 8px;
+    height: 50vh;
+    width: 50vw;
+    column-gap: 1px;
+  }
+
+  @include media-queries.tablet {
+    height: 60vh;
+    width: 60vw;
+    column-gap: 1px;
   }
 
   &__tile {
-    height: 16vh; //height: 22vh;
-    width: 17vw; //width: 14vw;
-    padding-top: 20px;
+    height: 23vh;
+    width: 23vw;
     box-shadow: 18px 14px 8px black;
     color: rgb(46, 18, 97);
     text-shadow: rgba(0, 0, 255, 0.3) 2px 5px;
     font-size: 90px;
     text-align: center;
+    align-content: center;
     font-weight: bold;
     background-color: rgb(255, 34, 204);
     cursor: pointer;
 
     @include media-queries.phone {
-      font-size: 40px;
+      height: 16.5vh;
+      width: 16.5vw;
+      font-size: 50px;
+    }
+
+    @include media-queries.tablet {
+      height: 19.7vh;
+      width: 19.7vw;
+      font-size: 70px;
     }
   }
 }
@@ -80,28 +154,6 @@ body {
   margin-top: 30px;
   opacity: 1;
   color: rgb(130, 105, 177);
-  font-family: fantasy;
   text-align: center;
   text-shadow: rgba(0, 0, 255, 0.3) 3px 2px;
 }
-
-// #tile_1,
-// #tile_4,
-// #tile_7 {
-//   border-right: 10px solid rgba(0, 0, 255, 0.3);
-// }
-
-// #tile_3,
-// #tile_6,
-// #tile_9 {
-//   border-left: 10px solid rgba(0, 0, 255, 0.3);
-// }
-
-// #tile_1,
-// #tile_2,
-// #tile_3,
-// #tile_4,
-// #tile_5,
-// #tile_6 {
-//   border-bottom: 10px solid rgba(0, 0, 255, 0.3);
-// }

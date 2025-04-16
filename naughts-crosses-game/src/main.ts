@@ -9,10 +9,10 @@ const allScoreSpans = document.querySelector<HTMLSpanElement>(
 const scoreXSpan = document.querySelector<HTMLSpanElement>("#scoreX");
 const score0Span = document.querySelector<HTMLSpanElement>("#score0");
 const restartBtn = document.querySelector<HTMLButtonElement>(
-  ".header__restartBtn"
+  ".header__BtnContainer-restartBtn"
 );
 const clearScoresBtn = document.querySelector<HTMLButtonElement>(
-  ".header__clearScoresBtn"
+  ".header__BtnContainer-clearScoresBtn"
 );
 
 let scoreCountX = 0; // initialise score count
@@ -88,46 +88,47 @@ const updateScoreboard = (scoreX: number, score0: number) => {
 };
 
 const checkIfPlayerWon = (currentPlayer: string) => {
-  // let isWinner: boolean = false;
+  // for horizontal wins
   if (
     board.upperLeft === currentPlayer &&
     board.upperCenter === currentPlayer &&
     board.upperRight === currentPlayer
   ) {
-      alertPlayerWin(currentPlayer);
-      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    alertPlayerWin(currentPlayer);
+    currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
   if (
     board.middleLeft === currentPlayer &&
     board.middleCenter === currentPlayer &&
     board.middleRight === currentPlayer
   ) {
-      alertPlayerWin(currentPlayer);
-      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    alertPlayerWin(currentPlayer);
+    currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
   if (
     board.lowerLeft === currentPlayer &&
     board.lowerCenter === currentPlayer &&
     board.lowerRight === currentPlayer
   ) {
-      alertPlayerWin(currentPlayer);
-      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    alertPlayerWin(currentPlayer);
+    currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
+  // for diagonal wins
   if (
     board.upperLeft === currentPlayer &&
     board.middleCenter === currentPlayer &&
     board.lowerRight === currentPlayer
   ) {
-      alertPlayerWin(currentPlayer);
-      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    alertPlayerWin(currentPlayer);
+    currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
   if (
     board.upperRight === currentPlayer &&
     board.middleCenter === currentPlayer &&
     board.lowerLeft === currentPlayer
   ) {
-      alertPlayerWin(currentPlayer);
-      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    alertPlayerWin(currentPlayer);
+    currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
 };
 

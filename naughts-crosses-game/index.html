@@ -7,19 +7,26 @@
     <title>Naughts & Crosses</title>
   </head>
   <body>
-    <header>
+    <header class="header">
       <h1 class="header__title">NAUGHTS & CROSSES</h1>
       <section class="header__scoreboard">
-        <span id="scoreX" class="header__scoreboard-player" role="player score">X: </span>
-        <span id="score0" class="header__scoreboard-player" role="player score">0: </span>
+        <span id="scoreX" class="header__scoreboard-player" role="player score"
+          >X:
+        </span>
+        <span id="score0" class="header__scoreboard-player" role="player score"
+          >0:
+        </span>
       </section>
-      <button class="header__restartBtn">Restart Game</button>
-      <button class="header__clearScoresBtn">Clear Scores</button>
+      <section class="header__BtnContainer">
+        <button class="header__BtnContainer-restartBtn">Restart Game</button>
+        <button class="header__BtnContainer-clearScoresBtn">
+          Clear Scores
+        </button>
+      </section>
     </header>
     <main>
       <section class="board" role="game board">
         <!--board containing squares for X and 0's-->
-        <!--if you need to, try using more descriptive id like (upper left)-->
         <div id="upperLeft" class="board__tile" role="board tile"></div>
         <div id="upperCenter" class="board__tile" role="board tile"></div>
         <div id="upperRight" class="board__tile" role="board tile"></div>
