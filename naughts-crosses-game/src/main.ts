@@ -17,6 +17,7 @@ const clearScoresBtn = document.querySelector<HTMLButtonElement>(
 
 let scoreCountX = 0; // initialise score count
 let scoreCount0 = 0; // initialise score count
+let turnCount = 0; // to track number or turns
 
 if (
   !tiles ||
@@ -57,21 +58,21 @@ const handleClicks = (event: Event) => {
 
   // fill tile with current player
   target.innerText = currentPlayer;
+  turnCount++;
 
   // to update board obj
   board[tileLocation] = currentPlayer;
-  
+
   checkIfPlayerWon(currentPlayer);
   updateScoreboard(scoreCountX, scoreCount0);
 
-  //   checkIfDraw();
-
   // switch players
   currentPlayer = currentPlayer === "X" ? "O" : "X";
+  checkIfDraw();
 };
 
 const alertPlayerWin = (currentPlayer: string) => {
-  setTimeout(() => alert(`Player ${currentPlayer} has Won!🏆`), 500);
+  setTimeout(() => alert(`Player ${currentPlayer} has WON! 🏆`), 500);
 };
 
 // const strikeThrough = (currentPlayer: string) => {
@@ -132,7 +133,11 @@ const checkIfPlayerWon = (currentPlayer: string) => {
   }
 };
 
-// const checkIfDraw = () => {};
+const checkIfDraw = () => {
+  if (turnCount === 9) {
+    setTimeout(() => alert(`It's a DRAW 😅, better luck next round.`), 500);
+  }
+};
 
 const resetBoard = () => {
   tiles.forEach((tile) => {
@@ -143,6 +148,8 @@ const resetBoard = () => {
   for (const key in board) {
     board[key] = null;
   }
+  turnCount = 0;
+  currentPlayer = "X";
 };
 
 // const clearScores = () => {
