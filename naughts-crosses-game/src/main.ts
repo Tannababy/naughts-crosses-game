@@ -1,14 +1,31 @@
 import "./style.scss";
+import "./media-queries.scss";
 
 //Selecting HTML elements through the DOM
 const tiles = document.querySelectorAll<HTMLDivElement>(".board__tile");
-const scoreCountX = document.querySelector<HTMLSpanElement>("#scoreX");
-const scoreCountY = document.querySelector<HTMLSpanElement>("#scoreY");
+const allScoreSpans = document.querySelector<HTMLSpanElement>(
+  ".header__scoreboard-player"
+);
+const scoreXSpan = document.querySelector<HTMLSpanElement>("#scoreX");
+const score0Span = document.querySelector<HTMLSpanElement>("#score0");
 const restartBtn = document.querySelector<HTMLButtonElement>(
   ".header__restartBtn"
 );
+const clearScoresBtn = document.querySelector<HTMLButtonElement>(
+  ".header__clearScoresBtn"
+);
 
-if (!tiles || !restartBtn) {
+let scoreCountX = 0; // initialise score count
+let scoreCount0 = 0; // initialise score count
+
+if (
+  !tiles ||
+  !restartBtn ||
+  !score0Span ||
+  !scoreXSpan ||
+  !allScoreSpans ||
+  !clearScoresBtn
+) {
   throw new Error(`Some elements can not be found`);
 }
 
@@ -29,17 +46,6 @@ const board: boardState = {
   lowerRight: " ",
 };
 
-const resetBoard = () => {
-  tiles.forEach((tile) => {
-      if (tile.innerText !== '') {
-          tile.innerText = '';
-      }
-  });
-    for (const key in board) {
-      board[key] = null;
-    }
-};
-
 const handleClicks = (event: Event) => {
   const target = event.currentTarget as HTMLDivElement;
   const tileLocation = target.id;
@@ -54,9 +60,11 @@ const handleClicks = (event: Event) => {
 
   // to update board obj
   board[tileLocation] = currentPlayer;
-
-  // setTimeout(() => checkIfPlayerWon(currentPlayer), 1);
+  
   checkIfPlayerWon(currentPlayer);
+  updateScoreboard(scoreCountX, scoreCount0);
+
+  //   checkIfDraw();
 
   // switch players
   currentPlayer = currentPlayer === "X" ? "O" : "X";
@@ -66,9 +74,18 @@ const alertPlayerWin = (currentPlayer: string) => {
   setTimeout(() => alert(`Player ${currentPlayer} has Won!🏆`), 500);
 };
 
-// const strikeThrough = (tile: string) => {
+// const strikeThrough = (currentPlayer: string) => {
+//   tiles.forEach((tile) => {
+//     if (tile.innerText !== "" && tile.innerText === currentPlayer) {
+//       tile.style.textDecoration = "line-through";
+//     }
+//   });
+// };
 
-// }
+const updateScoreboard = (scoreX: number, score0: number) => {
+  scoreXSpan.innerText = `X: ${scoreX}`;
+  score0Span.innerText = `0: ${score0}`;
+};
 
 const checkIfPlayerWon = (currentPlayer: string) => {
   // let isWinner: boolean = false;
@@ -77,24 +94,61 @@ const checkIfPlayerWon = (currentPlayer: string) => {
     board.upperCenter === currentPlayer &&
     board.upperRight === currentPlayer
   ) {
-    alertPlayerWin(currentPlayer);
+      alertPlayerWin(currentPlayer);
+      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
   if (
     board.middleLeft === currentPlayer &&
     board.middleCenter === currentPlayer &&
     board.middleRight === currentPlayer
   ) {
-    alertPlayerWin(currentPlayer);
+      alertPlayerWin(currentPlayer);
+      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
   if (
     board.lowerLeft === currentPlayer &&
     board.lowerCenter === currentPlayer &&
     board.lowerRight === currentPlayer
   ) {
-    alertPlayerWin(currentPlayer);
+      alertPlayerWin(currentPlayer);
+      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+  }
+  if (
+    board.upperLeft === currentPlayer &&
+    board.middleCenter === currentPlayer &&
+    board.lowerRight === currentPlayer
+  ) {
+      alertPlayerWin(currentPlayer);
+      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+  }
+  if (
+    board.upperRight === currentPlayer &&
+    board.middleCenter === currentPlayer &&
+    board.lowerLeft === currentPlayer
+  ) {
+      alertPlayerWin(currentPlayer);
+      currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
   }
 };
 
+// const checkIfDraw = () => {};
+
+const resetBoard = () => {
+  tiles.forEach((tile) => {
+    if (tile.innerText !== "") {
+      tile.innerText = "";
+    }
+  });
+  for (const key in board) {
+    board[key] = null;
+  }
+};
+
+// const clearScores = () => {
+//   allScoreSpans.
+// };
+
 tiles.forEach((tile) => tile.addEventListener("click", handleClicks));
 restartBtn.addEventListener("click", resetBoard);
+// clearScoresBtn.addEventListener("click", clearScores);
 // tiles.forEach((tile) => tile.addEventListener("click",() => checkIfPlayerWon(currentPlayer))
