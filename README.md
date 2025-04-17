@@ -20,7 +20,7 @@ Welcome to a fun and clean implementation of **Naughts & Crosses** built with **
 
 - **TypeScript** – for type-safe logic  
 - **HTML** – for structure  
-- **SCSS** – for custom styling and responsiveness   
+- **SCSS** – for custom styling and responsiveness
 
 ---
 
@@ -28,18 +28,25 @@ Welcome to a fun and clean implementation of **Naughts & Crosses** built with **
 
 1. **Clone the repo:**
    ```bash
-   git clone https://github.com/your-username/tic-tac-toe-ts.git
-   cd tic-tac-toe-ts
+   git@github.com:Tannababy/naughts-crosses-game.git
+   cd naughts-crosses-game
 
-2. **Install dependencies (if using a bundler like Vite/Webpack):**
+2. **Install dependencies (if using a bundler like Vite/Webpack) follow the prompts and select vanilla TypeScript:**
     ```bash
-    npm install
+    npm create vite@latest
 
 3. **Start the dev server:**
     ```bash
     npm run dev
 
 4. Or simply open the index.html file in your browser if it's a static project.
+
+---
+
+## ⬆️ Upgrades
+
+- Additional levels that increase the number of tiles on the board
+- Option of playing against the 💻 computer for single player mode
 
 ---
 

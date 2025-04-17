@@ -15,14 +15,9 @@ const clearScoresBtn = document.querySelector<HTMLButtonElement>(
 let scoreCountX = 0; // initialise score count
 let scoreCount0 = 0; // initialise score count
 let turnCount = 0; // to track number of turns each player makes
+let shouldResetboard = false;
 
-if (
-  !tiles ||
-  !restartBtn ||
-  !score0Span ||
-  !scoreXSpan ||
-  !clearScoresBtn
-) {
+if (!tiles || !restartBtn || !score0Span || !scoreXSpan || !clearScoresBtn) {
   throw new Error(`Some elements can not be found`);
 }
 
@@ -31,6 +26,7 @@ let currentPlayer: string = "X";
 type boardState = {
   [key: string]: string | null;
 };
+
 const board: boardState = {
   upperLeft: " ",
   upperCenter: " ",
@@ -59,8 +55,10 @@ const handleClicks = (event: Event) => {
   // to update board obj
   board[tileLocation] = currentPlayer;
 
-  checkIfPlayerWon(currentPlayer);
-  updateScoreboard(scoreCountX, scoreCount0);
+  if (checkIfPlayerWon(currentPlayer)) {
+    updateScoreboard(scoreCountX, scoreCount0);
+    setTimeout(() => resetBoard(), 500);
+  }
 
   // switch players
   currentPlayer = currentPlayer === "X" ? "O" : "X";
@@ -85,6 +83,7 @@ const checkIfPlayerWon = (currentPlayer: string) => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    return (shouldResetboard = true);
   }
   if (
     board.middleLeft === currentPlayer &&
@@ -93,6 +92,7 @@ const checkIfPlayerWon = (currentPlayer: string) => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    return (shouldResetboard = true);
   }
   if (
     board.lowerLeft === currentPlayer &&
@@ -101,6 +101,7 @@ const checkIfPlayerWon = (currentPlayer: string) => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    return (shouldResetboard = true);
   }
   // for diagonal wins
   if (
@@ -110,6 +111,7 @@ const checkIfPlayerWon = (currentPlayer: string) => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    return (shouldResetboard = true);
   }
   if (
     board.upperRight === currentPlayer &&
@@ -118,6 +120,7 @@ const checkIfPlayerWon = (currentPlayer: string) => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
+    return (shouldResetboard = true);
   }
 };
 
@@ -126,6 +129,7 @@ const checkIfDraw = () => {
     setTimeout(() => alert(`It's a DRAW 😅, better luck next round.`), 500);
   }
 };
+
 
 const resetBoard = () => {
   tiles.forEach((tile) => {
@@ -141,17 +145,14 @@ const resetBoard = () => {
 };
 
 const clearScores = () => {
-    scoreCountX = 0;
-    scoreCount0 = 0;
-    updateScoreboard(scoreCountX, scoreCount0);
+  scoreCountX = 0;
+  scoreCount0 = 0;
+  updateScoreboard(scoreCountX, scoreCount0);
 };
 
 tiles.forEach((tile) => tile.addEventListener("click", handleClicks));
-restartBtn.addEventListener("click", resetBoard);
+restartBtn.addEventListener("click", resetBoard); //function to clear board if player chooses to restart mid game
 clearScoresBtn.addEventListener("click", clearScores);
-
-
-
 
 // tiles.forEach((tile) => tile.addEventListener("click",() => checkIfPlayerWon(currentPlayer))
 // const strikeThrough = (currentPlayer: string) => {
