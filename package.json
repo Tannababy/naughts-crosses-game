@@ -1,7 +1,7 @@
 {
   "name": "naughts-crosses-game",
   "homepage": "https://tannabaybay.github.io/naughts-crosses-game",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
