@@ -132,7 +132,7 @@ const checkIfPlayerWon = (currentPlayer: string): boolean => {
 const checkIfDraw = () => {
   if (turnCount === 9) {
     setTimeout(() => alert(`It's a DRAW 😅, better luck next round.`), 500);
-    shouldResetBoard = true;
+    shouldResetBoard = false;
   }
 };
 

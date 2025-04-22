@@ -22,11 +22,11 @@ body {
       font-size: 30px;
     }
 
-     @include media-queries.tablet {
+    @include media-queries.tablet {
       font-size: 40px;
     }
 
-     @include media-queries.laptop {
+    @include media-queries.laptop {
       font-size: 55px;
     }
   }
@@ -42,12 +42,12 @@ body {
       margin: 25px auto;
     }
 
-     @include media-queries.tablet {
+    @include media-queries.tablet {
       font-size: 30px;
       margin: 25px auto;
     }
 
-     @include media-queries.laptop {
+    @include media-queries.laptop {
       font-size: 40px;
       margin: 25px auto;
     }
@@ -138,13 +138,13 @@ body {
     @include media-queries.phone {
       height: 16.5vh;
       width: 16.5vw;
-      font-size: 50px;
+      font-size: 30px;
     }
 
     @include media-queries.tablet {
       height: 19.7vh;
       width: 19.7vw;
-      font-size: 70px;
+      font-size: 60px;
     }
   }
 }
