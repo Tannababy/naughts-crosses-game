@@ -152,7 +152,7 @@ const resetBoard = () => {
   }
   turnCount = 0;
   currentPlayer = "X";
-  shouldResetBoard = true;
+//   shouldResetBoard = true;
 };
 
 const clearScores = () => {
