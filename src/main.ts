@@ -87,7 +87,6 @@ const checkIfPlayerWon = (currentPlayer: string): boolean => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
-    shouldResetBoard = true;
     return true;
   }
   if (
@@ -97,7 +96,6 @@ const checkIfPlayerWon = (currentPlayer: string): boolean => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
-    shouldResetBoard = true;
     return true;
   }
   if (
@@ -107,7 +105,6 @@ const checkIfPlayerWon = (currentPlayer: string): boolean => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
-    shouldResetBoard = true;
     return true;
   }
   // for diagonal wins
@@ -118,7 +115,6 @@ const checkIfPlayerWon = (currentPlayer: string): boolean => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
-    shouldResetBoard = true;
     return true;
   }
   if (
@@ -128,7 +124,6 @@ const checkIfPlayerWon = (currentPlayer: string): boolean => {
   ) {
     alertPlayerWin(currentPlayer);
     currentPlayer === "X" ? scoreCountX++ : scoreCount0++;
-    shouldResetBoard = true;
     return true;
   }
   return false;
@@ -152,7 +147,6 @@ const resetBoard = () => {
   }
   turnCount = 0;
   currentPlayer = "X";
-//   shouldResetBoard = true;
 };
 
 const clearScores = () => {
