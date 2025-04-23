@@ -62,6 +62,7 @@ const handleClicks = (event: Event) => {
   if (checkIfPlayerWon(currentPlayer)) {
     updateScoreboard(scoreCountX, scoreCount0);
     setTimeout(() => resetBoard(), 500);
+    return;
   }
 
   // switch players
